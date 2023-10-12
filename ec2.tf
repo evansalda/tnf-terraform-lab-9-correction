@@ -12,15 +12,14 @@ resource "aws_instance" "serveur_web" {
 
   user_data = <<EOF
 #!/bin/bash
-sudo yum update -y
-sudo amazon-linux-extras install php8.0 mariadb10.5
-sudo yum install -y httpd
+sudo dnf update -y
+sudo dnf install -y httpd php php-mysqli mariadb105
 sudo systemctl start httpd
 sudo systemctl enable httpd
-sudo usermod -a -G apache ec2-user
-sudo chown -R ec2-user:apache /var/www
-sudo chmod 2775 /var/www
-find /var/www -type d -exec sudo chmod 2775 {} \;
-find /var/www -type f -exec sudo chmod 0664 {} \;
+usermod -a -G apache ec2-user
+chown -R ec2-user:apache /var/www
+chmod 2775 /var/www
+find /var/www -type d -exec chmod 2775 {} \;
+find /var/www -type f -exec chmod 0664 {} \;
 EOF
 }

@@ -29,7 +29,7 @@ resource "aws_security_group" "serveur_web" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["90.65.42.76/32"] # Remplacer par votre adresse IP publique
+    cidr_blocks = ["5.50.34.152/32"] # Remplacer par votre adresse IP publique
   }
 
   ingress {
